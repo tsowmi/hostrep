@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-app.post("/login",function(req,res){
+app.post("https://641870c601f1ec5ad9b07bb9--taupe-creponne-13e918.netlify.app/login",function(req,res){
   
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
     const newUser = new Trial({
@@ -37,7 +37,7 @@ app.post("/login",function(req,res){
     });
     
       newUser.save();
-      res.redirect("/");
+      res.redirect("https://641870c601f1ec5ad9b07bb9--taupe-creponne-13e918.netlify.app/");
     
     });
 
