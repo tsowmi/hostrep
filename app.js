@@ -7,7 +7,7 @@ const saltRounds=10;
 
 const app=express();
 const PORT = process.env.PORT || 3001;
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/trialDB"
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/test2"
 
 
 // mongoose.connect("mongodb://127.0.0.1:27017/trialDB");
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-app.post("https://641870c601f1ec5ad9b07bb9--taupe-creponne-13e918.netlify.app/login",function(req,res){
+app.post("/login",function(req,res){
   
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
     const newUser = new Trial({
@@ -37,11 +37,12 @@ app.post("https://641870c601f1ec5ad9b07bb9--taupe-creponne-13e918.netlify.app/lo
     });
     
       newUser.save();
-      res.redirect("https://641870c601f1ec5ad9b07bb9--taupe-creponne-13e918.netlify.app/");
+      res.redirect("/");
     
     });
 
 });
+
 
 app.listen(PORT,function(){
   console.log("Server started at port 3001");
